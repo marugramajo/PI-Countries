@@ -17,12 +17,16 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const server = require("./src/app.js");
+const { conn } = require("./src/db.js");
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+//FORCE ES PARA FORZAR EL REINICIO DE LA BASE DE DATOS.
+//SI YA NO TENGO NADA PARA MODIFICAR EN MIS MODELOS, LE PONGO FORCE FALSE, PARA QUE NO SE REINICIE Y PIERDA POR EJEMPLO
+//MIS ACTIVIDADES CREADADS EN LA BASE DE DATOS.
+//SI HAGO UN CAMBIO EN LOS MODELOS, DEBO PONERLO EN FORCE TRUE.
+conn.sync({ force: false }).then(() => {
   server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
 });
