@@ -2,7 +2,6 @@ const { Router } = require("express");
 const { Activity, Country } = require("../db");
 const { Op } = require("sequelize");
 const { infoApi } = require("../apiData/apiData");
-// const { apiData } = require("../apiData/apiData");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
@@ -31,6 +30,7 @@ router.get("/countries", async (req, res) => {
       }
     } else {
       const todosPaises = await Country.findAll({
+        order: [["name", "ASC"]],
         include: {
           model: Activity,
           attributes: ["name", "difficulty", "duration", "season"],
@@ -90,6 +90,20 @@ router.get("/countries/:id", async (req, res) => {
     res.status(404).send(error);
   }
 });
+
+//ruta para trer toda las actividades
+router.get("/allactivities", async (req, res) => {
+  try {
+    const allAct = await Activity.findAll();
+    if (allAct) {
+      return res.json(allAct);
+    } else {
+      return res.status(404).json({ message: "No se encontraron paises." });
+    }
+  } catch (error) {}
+});
+
+//HACER RUTA DE DELETE Y PUT
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);

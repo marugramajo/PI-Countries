@@ -1,0 +1,108 @@
+.card {
+  width: 190px;
+  height: 254px;
+  background: rgb(0, 0, 0);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 20px;
+}
+
+.card:hover {
+  width: 190px;
+  height: 254px;
+  background: rgb(255, 255, 255);
+  border: 2px solid rgb(200, 200, 200);
+  border-radius: 20px;
+  background-color: #dfdfdf;
+  transition: all 0.5s;
+}
+
+.secondAnimation {
+  --hoverContorno: #959595;
+}
+
+.secondAnimation:hover,
+.secondAnimation:focus {
+  -webkit-animation: cardAnimacion 1.4s;
+  animation: cardAnimacion 1.4s;
+  box-shadow: 0 0 0 0.8em rgba(255, 255, 255, 0);
+  border-radius: 20px;
+}
+
+@-webkit-keyframes cardAnimacion {
+  0% {
+    box-shadow: 0 0 0 0 var(--hoverContorno);
+  }
+}
+
+@keyframes cardAnimacion {
+  0% {
+    box-shadow: 0 0 0 0 var(--hoverContorno);
+  }
+}
+.flag {
+  width: 100%;
+  height: 100px;
+  border-radius: 9%;
+}
+.cardLogo {
+  padding: 20px;
+  border-radius: 3px;
+}
+
+.button {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: #4d3e295b;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+.continent {
+  color: rgb(92, 85, 85);
+}
+/* .card {
+  height: 250px;
+  border-radius: 30px;
+  background: #282727;
+  box-shadow: 5px 5px 20px #bebebe, -5px -5px 20px #ffffff;
+}
+.cardLogo {
+  padding: 10px;
+  border-radius: 3px;
+}
+.flag {
+  width: 100px;
+  border-radius: 50%;
+  height: 100px;
+}
+.cardContent {
+  color: #040404;
+}
+.button {
+  color: #100f0f;
+  padding: 1em 2em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 4px 4px 8px #c5c5c5, -4px -4px 8px #ffffff;
+} */

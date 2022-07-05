@@ -19,6 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
+const { getCountries } = require("./src/routes/index");
 
 // Syncing all the models at once.
 //FORCE ES PARA FORZAR EL REINICIO DE LA BASE DE DATOS.

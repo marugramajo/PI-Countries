@@ -5,12 +5,13 @@ const { Country } = require("../db");
 const infoApi = async () => {
   try {
     const info = await axios(`https://restcountries.com/v3/all`);
+
     info.data.map(async (pais) => {
       await Country.findOrCreate({
         where: {
           id: pais.cca3,
           name: pais.name.common,
-          flag: pais.flags[0],
+          flag: pais.flags[1],
           continent: pais.region,
           capital: pais.capital
             ? pais.capital[0]

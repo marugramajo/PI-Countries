@@ -1,0 +1,36 @@
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  gap: 2em;
+  justify-content: center;
+  padding: 2em 0;
+  background-image: url("https://i.pinimg.com/originals/46/2f/56/462f56d9c11e41741daae2c35c70f069.jpg");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.loader {
+  position: relative;
+  padding: 2em 0;
+}
+.card {
+  width: 450px;
+  height: 650px;
+  background: rgb(15, 15, 15);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  font-family: "Times New Roman", Times, serif;
+  margin: 10;
+  color: rgb(224, 219, 219);
+  padding: 1em;
+  font-size: 13px;
+  margin-top: 12%;
+  margin-left: 150%;
+}
+
+.secondAnimation {
+  --hoverContorno: #959595;
+}
+.actividad {
+  margin-bottom: 12%;
+}
