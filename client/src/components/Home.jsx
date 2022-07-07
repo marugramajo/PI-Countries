@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import styles from "./Home.module.css";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  filtroContinente,
+  filtroActividad,
   getActivities,
   getCountries,
+  ordenNombre,
+  ordenPoblacion,
   searchCountriesByName,
 } from "../actions/actions";
 import CountryCards from "./CountryCards/CountryCards";
@@ -44,31 +47,36 @@ export default function Home() {
     dispatch(searchCountriesByName(e.target.value));
     setCurrentPage(1);
   }
-
-  function handleFiltroContinente(e) {
-    dispatch(filtroContinente(e.target.value));
+  function handleOrdenPoblacion(e) {
+    dispatch(ordenPoblacion(e.target.value));
     setCurrentPage(1);
   }
-  //FUNCION PARA RECARGAR Y VOLVER A CARGAR TODOS LOS PAISES.
-  // function handleClick(e){
-  //   e.preventDefault() //el prevent default es para que justamente no se recargue la pagina y no se borren las cosas
-  //   dispatch(getCountries())
-  // }
+
+  function handleOrdenNombre(e) {
+    dispatch(ordenNombre(e.target.value));
+    setCurrentPage(1);
+  }
+
+  function handelFiltroActividad(e) {
+    dispatch(filtroActividad(e.target.value));
+    setCurrentPage(1);
+  }
 
   return (
-    <div>
+    <div className={styles.homeContainer}>
       <FilterBar
         activities={estadoActividad}
-        handleFiltroContinente={handleFiltroContinente}
+        handleOrdenNombre={handleOrdenNombre}
+        handelFiltroActividad={handelFiltroActividad}
+        handleOrdenPoblacion={handleOrdenPoblacion}
       />
+      <SearchBar handleSearch={handleSearch} />
+      <CountryCards paises={currentPaises} />
       <Paginado
         paisesPorPagina={paisesPorPagina}
         totalPaises={estadoPaises.length}
         paginar={paginar}
       />
-      <SearchBar handleSearch={handleSearch} />
-      <CountryCards paises={currentPaises} />
     </div>
   );
 }
-// filtrar por continente, POR TIPO DE ACT TURISTICA, asendent y descendt y por poblacion

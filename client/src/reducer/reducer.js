@@ -65,7 +65,7 @@ function rootReducer(state = initialState, action) {
     case ORDEN_POBLACION:
       let ordenados;
       if (action.payload === "todos") {
-        ordenados = state.filteredCountries;
+        ordenados = state.countries;
       } else if (action.payload === "mayorpopulation") {
         ordenados = state.filteredCountries.sort((a, b) => {
           return b.population - a.population;

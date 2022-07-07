@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Paginado.module.css";
 
 export default function Paginado({ paisesPorPagina, totalPaises, paginar }) {
   const numeroDePaginas = [];
@@ -7,11 +8,15 @@ export default function Paginado({ paisesPorPagina, totalPaises, paginar }) {
     numeroDePaginas.push(i);
   }
   return (
-    <div>
+    <div className={styles.paginado}>
       <div style={{ display: "flex" }}>
         {numeroDePaginas.map((pagina) => {
           return (
-            <button onClick={() => paginar(pagina)} key={pagina}>
+            <button
+              onClick={() => paginar(pagina)}
+              key={pagina}
+              className={styles.btn}
+            >
               {pagina}
             </button>
           );

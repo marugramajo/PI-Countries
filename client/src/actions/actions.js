@@ -10,21 +10,11 @@ import {
   GET_DETAIL,
 } from "./actionTypes";
 
-// export function getCountries() {
-//   return async (dispatch) => {
-//     const obtenerinfo = await axios.get("http://localhost:3001/countries");
-//     dispatch({ type: GET_COUNTRIES, payload: obtenerinfo.data });
-//   };
-// }
-
-//PASAR A FETCHHH
 export function getCountries() {
-  return (dispatch) =>
-    fetch("http://localhost:3001/countries")
-      .then((response) => response.json())
-      .then((json) => {
-        dispatch({ type: GET_COUNTRIES, payload: json });
-      });
+  return async (dispatch) => {
+    const obtenerinfo = await axios.get("http://localhost:3001/countries");
+    dispatch({ type: GET_COUNTRIES, payload: obtenerinfo.data });
+  };
 }
 
 export function getActivities() {

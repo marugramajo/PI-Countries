@@ -12,11 +12,12 @@ import styles from "./CreateActivity.module.css";
 export default function CreateActivity() {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries);
+  const activitiesName = useSelector((state) => state.activities);
   const history = useHistory();
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    dispatch(getCountries());
+    dispatch(getCountries(), getActivities);
   }, []);
 
   const [input, setInput] = useState({
@@ -32,6 +33,33 @@ export default function CreateActivity() {
     let errors = [];
     if (!input.name) {
       errors.name = "se requiere un nombre";
+    }
+    if (input.name.includes("  ")) {
+      errors.name = "se requiere un nombre";
+    }
+    if (
+      input.name.length < 4 ||
+      input.name.length > 30 ||
+      input.name.includes("1") ||
+      input.name.includes("2") ||
+      input.name.includes("3") ||
+      input.name.includes("4") ||
+      input.name.includes("5") ||
+      input.name.includes("6") ||
+      input.name.includes("7") ||
+      input.name.includes("8") ||
+      input.name.includes("9") ||
+      input.name.includes("0")
+    ) {
+      errors.name = "se requiere un nombre";
+    }
+
+    if (
+      activitiesName.find(
+        (p) => p.name.toLowerCase() === input.name.toLowerCase()
+      )
+    ) {
+      errors.name = `*La actividad -${input.name}- ya existe`;
     }
     if (Number(input.difficulty) > 5 || Number(input.difficulty) < 1) {
       errors.difficulty = "el nivel de dificultad es de 1 a 5";
@@ -111,9 +139,9 @@ export default function CreateActivity() {
   }
 
   return (
-    <div>
+    <div className={styles.createAct}>
       <Link to="/home">
-        <button>VOLVER</button>
+        <button className={styles.btn}>VOLVER</button>
       </Link>
       <h1>Creá tu actividad</h1>
       <form
@@ -166,7 +194,7 @@ export default function CreateActivity() {
           <label>
             <input
               type="radio"
-              name="Verano"
+              name="season"
               value="Verano"
               onChange={(e) => handleCheck(e)}
             />
@@ -175,7 +203,7 @@ export default function CreateActivity() {
           <label>
             <input
               type="radio"
-              name="Primavera"
+              name="season"
               value="Primavera"
               onChange={(e) => handleCheck(e)}
             />
@@ -184,7 +212,7 @@ export default function CreateActivity() {
           <label>
             <input
               type="radio"
-              name="Invierno"
+              name="season"
               value="Invierno"
               onChange={(e) => handleCheck(e)}
             />
@@ -193,7 +221,7 @@ export default function CreateActivity() {
           <label>
             <input
               type="radio"
-              name="Otoño"
+              name="season"
               value="Otoño"
               onChange={(e) => handleCheck(e)}
             />
@@ -211,9 +239,10 @@ export default function CreateActivity() {
           })}
         </select>
         <ul>
-          <li key={countries.id}>{input.countries.map((e) => e + " ,")}</li>
+          <li key={countries.id}>{input.countries.map((e) => e + " ,")} </li>
         </ul>
         <button
+          className={styles.btn}
           type="submit"
           disabled={
             !Object.values(errors).every((o) => o === null) ? true : false

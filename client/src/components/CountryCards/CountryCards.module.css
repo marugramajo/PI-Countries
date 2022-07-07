@@ -4,8 +4,8 @@
   gap: 2em;
   justify-content: center;
   padding: 2em 0;
-  background-image: url("https://i.pinimg.com/originals/46/2f/56/462f56d9c11e41741daae2c35c70f069.jpg");
-  height: 100vh;
+  /* background-image: url("https://i.pinimg.com/originals/46/2f/56/462f56d9c11e41741daae2c35c70f069.jpg");
+  height: 100vh; */
   background-repeat: no-repeat;
   background-size: cover;
 }

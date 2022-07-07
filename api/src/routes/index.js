@@ -103,9 +103,4 @@ router.get("/allactivities", async (req, res) => {
   } catch (error) {}
 });
 
-//HACER RUTA DE DELETE Y PUT
-
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
-
 module.exports = router;

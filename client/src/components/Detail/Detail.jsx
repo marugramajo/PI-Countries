@@ -23,17 +23,17 @@ export default function Detail(props) {
             <img className={styles.flag} src={estadoDetalle.flag} />
             <h1 className={styles.nombre}>{estadoDetalle.name}</h1>
             <h2>{estadoDetalle.continent}</h2>
-            <h3>{estadoDetalle.id}</h3>
-            <h3>{estadoDetalle.capital}</h3>
-            <h3>{estadoDetalle.subregion}</h3>
-            <h3>{estadoDetalle.area}</h3>
-            <h3>{estadoDetalle.population}</h3>
+            <h3>ID:{estadoDetalle.id}</h3>
+            <h3>CAPITAL:{estadoDetalle.capital}</h3>
+            <h3>REGIÓN:{estadoDetalle.subregion}</h3>
+            <h3>AREA:{estadoDetalle.area}</h3>
+            <h3>POBLACIÓN:{estadoDetalle.population}</h3>
           </div>
           <h5 className={styles.actividad}>
             {estadoDetalle.activities &&
               estadoDetalle.activities.map((e) => {
                 return (
-                  <div>
+                  <div key={e.id}>
                     <h2>ACTIVIDADES: {e.name}</h2>
                     <h2>TEMPORADA: {e.season}</h2>
                     <h2>DIFICULTAD: {e.difficulty}</h2>
